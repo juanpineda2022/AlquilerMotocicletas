@@ -4,8 +4,8 @@
  */
 package com.usa.ciclo3.g34.proyectoMotocicletas.controller;
 
-import com.usa.ciclo3.g34.proyectoMotocicletas.model.Motocicleta;
-import com.usa.ciclo3.g34.proyectoMotocicletas.service.MotocicletaService;
+import com.usa.ciclo3.g34.proyectoMotocicletas.model.Categoria;
+import com.usa.ciclo3.g34.proyectoMotocicletas.service.CategoriaService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,37 +23,37 @@ import org.springframework.web.bind.annotation.RestController;
  * @author jpine
  */
 @RestController
-@RequestMapping("/api/Motorbike")
-public class MotocicletaController {
+@RequestMapping("/api/Category")
+public class CategoriaController {
     
     @Autowired
-    private MotocicletaService motocicletaService;
+    private CategoriaService categoriaService;
     //GET
     @GetMapping("/all")
-    public List<Motocicleta> getMotocicletas(){
-        return motocicletaService.getAll();
+    public List<Categoria> getCategorias(){
+        return categoriaService.getAll();
     }
     
     @GetMapping("/{id}")
-    public Optional<Motocicleta> getMotocicleta(@PathVariable("id") int motocicletaId){
-        return motocicletaService.getMotocicleta(motocicletaId);
+    public Optional<Categoria> getCategoria(@PathVariable("id") int categoriaId){
+        return categoriaService.getCategoria(categoriaId);
     }
     
     //POST
     @PostMapping("/save")
-    public Motocicleta save(@RequestBody Motocicleta motocicleta){
-        return motocicletaService.save(motocicleta);
+    public Categoria save(@RequestBody Categoria categoria){
+        return categoriaService.save(categoria);
     }
     
     //PUT
     @PutMapping("/update")
-    public Motocicleta update(@RequestBody Motocicleta motocicleta){
-        return motocicletaService.update(motocicleta);
+    public Categoria update(@RequestBody Categoria categoria){
+        return categoriaService.update(categoria);
     }
     
     //DELETE
     @DeleteMapping("/{id}")
     public boolean delete(@PathVariable("id") int id){
-        return motocicletaService.deleteMotocicleta(id);
+        return categoriaService.deleteCategoria(id);
     }
 }
