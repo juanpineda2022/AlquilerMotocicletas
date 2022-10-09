@@ -33,53 +33,53 @@ public class MotocicletaService {
     }
     
     //POST
-    public Motocicleta save(Motocicleta motocicleta){
-        if(motocicleta.getId()==null){
-            return motocicletaRepository.save(motocicleta);
+    public Motocicleta save(Motocicleta motorbike){
+        if(motorbike.getId()==null){
+            return motocicletaRepository.save(motorbike);
         }else{
-            Optional<Motocicleta> m = motocicletaRepository.getMotocicleta(motocicleta.getId());
+            Optional<Motocicleta> m = motocicletaRepository.getMotocicleta(motorbike.getId());
             if(m.isEmpty()){
-                return motocicletaRepository.save(motocicleta);
+                return motocicletaRepository.save(motorbike);
             }else{
-                return motocicleta;
+                return motorbike;
             }
         }
     }
     
     //PUT
-    public Motocicleta update(Motocicleta motocicleta){
-        if(motocicleta.getId()!=null){
-            Optional<Motocicleta> m = motocicletaRepository.getMotocicleta(motocicleta.getId());
+    public Motocicleta update(Motocicleta motorbike){
+        if(motorbike.getId()!=null){
+            Optional<Motocicleta> m = motocicletaRepository.getMotocicleta(motorbike.getId());
             if(!m.isEmpty()){
-                if(motocicleta.getName()!=null){
-                    m.get().setName(motocicleta.getName());
+                if(motorbike.getName()!=null){
+                    m.get().setName(motorbike.getName());
                 }
-                if(motocicleta.getBrand()!=null){
-                    m.get().setBrand(motocicleta.getBrand());
+                if(motorbike.getBrand()!=null){
+                    m.get().setBrand(motorbike.getBrand());
                 }
-                if(motocicleta.getYear()!=null){
-                    m.get().setYear(motocicleta.getYear());
+                if(motorbike.getYear()!=null){
+                    m.get().setYear(motorbike.getYear());
                 }
-                if(motocicleta.getDescription()!=null){
-                    m.get().setDescription(motocicleta.getDescription());
+                if(motorbike.getDescription()!=null){
+                    m.get().setDescription(motorbike.getDescription());
                 }
-                if(motocicleta.getCategory()!=null){
-                    m.get().setCategory(motocicleta.getCategory());
+                if(motorbike.getCategory()!=null){
+                    m.get().setCategory(motorbike.getCategory());
                 }
                 motocicletaRepository.save(m.get());
                 return m.get();
             }else{
-                return motocicleta;
+                return motorbike;
             }
         }else{
-            return motocicleta;
+            return motorbike;
         }    
     }
     
     //DELETE
     public boolean deleteMotocicleta(int id){
-        Boolean mBoolean = getMotocicleta(id).map(motocicleta -> {
-            motocicletaRepository.delete(motocicleta);
+        Boolean mBoolean = getMotocicleta(id).map(motorbike -> {
+            motocicletaRepository.delete(motorbike);
             return true;
         }).orElse(false);
         return mBoolean;

@@ -6,6 +6,8 @@ package com.usa.ciclo3.g34.proyectoMotocicletas.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -37,9 +40,18 @@ public class Motocicleta implements Serializable{
     
     @ManyToOne
     @JoinColumn(name = "categoryId")
-    @JsonIgnoreProperties("motocicletas")
+    @JsonIgnoreProperties("motorbikes")
     private Categoria category;
-
+    
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "motorbike")
+    @JsonIgnoreProperties("motorbike")
+    private List<Mensaje> messages;
+    
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "motorbike")
+    @JsonIgnoreProperties("motorbike")
+    private List<Reservacion> reservations;
+    
+    
     public Motocicleta() {
     }
 
@@ -47,14 +59,18 @@ public class Motocicleta implements Serializable{
         this.id = id;
     }
 
-    public Motocicleta(Integer id, String name, String brand, Integer year, String description, Categoria category) {
+    public Motocicleta(Integer id, String name, String brand, Integer year, String description, Categoria category, List<Mensaje> messages, List<Reservacion> reservations) {
         this.id = id;
         this.name = name;
         this.brand = brand;
         this.year = year;
         this.description = description;
         this.category = category;
+        this.messages = messages;
+        this.reservations = reservations;
     }
+
+    
 
     public Integer getId() {
         return id;
@@ -104,10 +120,25 @@ public class Motocicleta implements Serializable{
         this.category = category;
     }
 
+    public List<Mensaje> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Mensaje> messages) {
+        this.messages = messages;
+    }
+
+    public List<Reservacion> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservacion> reservations) {
+        this.reservations = reservations;
+    }
+
     @Override
     public String toString() {
-        return "Motocicleta{" + "id=" + id + ", name=" + name + ", brand=" + brand + ", year=" + year + ", description=" + description + ", category=" + category + '}';
+        return "Motocicleta{" + "id=" + id + ", name=" + name + ", brand=" + brand + ", year=" + year + ", description=" + description + ", category=" + category + ", messages=" + messages + ", reservations=" + reservations + '}';
     }
-    
     
 }

@@ -31,12 +31,12 @@ public class MotocicletaRepository {
     }
     
     //POST AND PUT
-    public Motocicleta save(Motocicleta motocicleta){
-        return motocicletaCrudRepository.save(motocicleta);
+    public Motocicleta save(Motocicleta motorbike){
+        return motocicletaCrudRepository.save(motorbike);
     }
     
     //DELETE
-    public void delete(Motocicleta motocicleta){
-        motocicletaCrudRepository.delete(motocicleta);
+    public void delete(Motocicleta motorbike){
+        motocicletaCrudRepository.delete(motorbike);
     }
 }

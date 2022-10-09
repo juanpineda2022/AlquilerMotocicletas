@@ -28,11 +28,11 @@ public class CategoriaRepository {
         return categoriaCrudRepository.findById(id);
     }
     
-    public Categoria save(Categoria categoria){
-        return categoriaCrudRepository.save(categoria);
+    public Categoria save(Categoria category){
+        return categoriaCrudRepository.save(category);
     }
     
-    public void delete(Categoria categoria){
-        categoriaCrudRepository.delete(categoria);
+    public void delete(Categoria category){
+        categoriaCrudRepository.delete(category);
     }
 }
