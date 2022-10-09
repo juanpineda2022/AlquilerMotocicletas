@@ -30,11 +30,11 @@ public class Categoria implements Serializable{
     @Column(length = 45, nullable = true)
     private String name;
     @Column(length = 250, nullable = true)
-    private String descripction;
+    private String description;
     
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy="category")
     @JsonIgnoreProperties("category")
-    private List<Motocicleta> motocicletas;
+    private List<Motocicleta> motorbikes;
 
     public Categoria() {
     }
@@ -43,11 +43,11 @@ public class Categoria implements Serializable{
         this.id = id;
     }
 
-    public Categoria(Integer id, String name, String descripction, List<Motocicleta> motocicletas) {
+    public Categoria(Integer id, String name, String description, List<Motocicleta> motorbikes) {
         this.id = id;
         this.name = name;
-        this.descripction = descripction;
-        this.motocicletas = motocicletas;
+        this.description = description;
+        this.motorbikes = motorbikes;
     }
 
     public Integer getId() {
@@ -66,25 +66,25 @@ public class Categoria implements Serializable{
         this.name = name;
     }
 
-    public String getDescripction() {
-        return descripction;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescripction(String descripction) {
-        this.descripction = descripction;
+    public void setDescripction(String description) {
+        this.description = description;
     }
 
-    public List<Motocicleta> getMotocicletas() {
-        return motocicletas;
+    public List<Motocicleta> getMotorbikes() {
+        return motorbikes;
     }
 
-    public void setMotocicletas(List<Motocicleta> motocicletas) {
-        this.motocicletas = motocicletas;
+    public void setMotorbikes(List<Motocicleta> motorbikes) {
+        this.motorbikes = motorbikes;
     }
 
     @Override
     public String toString() {
-        return "Categoria{" + "id=" + id + ", name=" + name + ", descripction=" + descripction + ", motocicletas=" + motocicletas + '}';
+        return "Categoria{" + "id=" + id + ", name=" + name + ", description=" + description + ", motorbikes=" + motorbikes + '}';
     }
     
     

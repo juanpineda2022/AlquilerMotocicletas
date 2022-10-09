@@ -35,44 +35,44 @@ public class CategoriaService {
     }
     
     //POST
-    public Categoria save(Categoria categoria){
-        if(categoria.getId()==null){
-            return categoriaRepository.save(categoria);
+    public Categoria save(Categoria category){
+        if(category.getId()==null){
+            return categoriaRepository.save(category);
         }else{
-            Optional<Categoria> m = categoriaRepository.getCategoria(categoria.getId());
-            if(m.isEmpty()){
-                return categoriaRepository.save(categoria);
+            Optional<Categoria> c = categoriaRepository.getCategoria(category.getId());
+            if(c.isEmpty()){
+                return categoriaRepository.save(category);
             }else{
-                return categoria;
+                return category;
             }
         }
     }
     
     //PUT
-    public Categoria update(Categoria categoria){
-        if(categoria.getId()!=null){
-            Optional<Categoria> c = categoriaRepository.getCategoria(categoria.getId());
+    public Categoria update(Categoria category){
+        if(category.getId()!=null){
+            Optional<Categoria> c = categoriaRepository.getCategoria(category.getId());
             if(!c.isEmpty()){
-                if(categoria.getName()!=null){
-                    c.get().setName(categoria.getName());
+                if(category.getName()!=null){
+                    c.get().setName(category.getName());
                 }
-                if(categoria.getDescripction()!=null){
-                    c.get().setDescripction(categoria.getDescripction());
+                if(category.getDescription()!=null){
+                    c.get().setDescripction(category.getDescription());
                 }
                 categoriaRepository.save(c.get());
                 return c.get();
             }else{
-                return categoria;
+                return category;
             }
         }else{
-            return categoria;
+            return category;
         }    
     }
     
     //DELETE
     public boolean deleteCategoria(int id){
-        Boolean cBoolean = getCategoria(id).map(categoria -> {
-            categoriaRepository.delete(categoria);
+        Boolean cBoolean = getCategoria(id).map(category -> {
+            categoriaRepository.delete(category);
             return true;
         }).orElse(false);
         return cBoolean;
