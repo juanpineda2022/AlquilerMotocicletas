@@ -26,17 +26,17 @@ public class Calificacion implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer id = null;
     @Column(length = 1)
-    private Integer calificacion;
+    private Integer calificacion = null;
     //Ver como hacer el set mysql 
     @Column(length = 250)
-    private String message;
+    private String message = null;
     
     @ManyToOne
     @JoinColumn(name="reserva")
     @JsonIgnoreProperties("score")
-    private Reserva reservation;
+    private Reserva reservation = null;
 
     public Calificacion() {
     }
