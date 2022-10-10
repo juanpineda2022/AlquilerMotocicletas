@@ -36,7 +36,7 @@ public class Calificacion implements Serializable{
     @ManyToOne
     @JoinColumn(name="reserva")
     @JsonIgnoreProperties("score")
-    private Reservacion reservation;
+    private Reserva reservation;
 
     public Calificacion() {
     }
@@ -45,7 +45,7 @@ public class Calificacion implements Serializable{
         this.id = id;
     }
 
-    public Calificacion(Integer id, Integer calificacion, String message, Reservacion reservation) {
+    public Calificacion(Integer id, Integer calificacion, String message, Reserva reservation) {
         this.id = id;
         this.calificacion = calificacion;
         this.message = message;
@@ -76,11 +76,11 @@ public class Calificacion implements Serializable{
         this.message = message;
     }
 
-    public Reservacion getReservation() {
+    public Reserva getReservation() {
         return reservation;
     }
 
-    public void setReservation(Reservacion reservation) {
+    public void setReservation(Reserva reservation) {
         this.reservation = reservation;
     }
 

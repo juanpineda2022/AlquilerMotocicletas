@@ -19,7 +19,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Administradores")
-public class Administradores implements Serializable{
+public class Admin implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,14 +31,14 @@ public class Administradores implements Serializable{
     @Column(length = 45)
     private String password;
 
-    public Administradores() {
+    public Admin() {
     }
 
-    public Administradores(Integer id) {
+    public Admin(Integer id) {
         this.id = id;
     }
 
-    public Administradores(Integer id, String name, String email, String password) {
+    public Admin(Integer id, String name, String email, String password) {
         this.id = id;
         this.name = name;
         this.email = email;

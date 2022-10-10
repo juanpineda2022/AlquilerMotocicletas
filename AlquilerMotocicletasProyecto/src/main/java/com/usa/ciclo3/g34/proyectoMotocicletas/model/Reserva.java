@@ -7,6 +7,7 @@ package com.usa.ciclo3.g34.proyectoMotocicletas.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.Generated;
 import javax.persistence.CascadeType;
@@ -26,14 +27,15 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="reservas")
-public class Reservacion implements Serializable {
+public class Reserva implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private LocalDateTime startDate;
-    private LocalDateTime sevolutionDate;
-    private String status;
+    private Integer idReservation;
+    private Date startDate;
+    private Date devolutionDate;
+    //Modificar después
+    private String status = "created";
     
     @ManyToOne
     @JoinColumn(name = "motocicleta")
@@ -42,43 +44,45 @@ public class Reservacion implements Serializable {
     
     @ManyToOne
     @JoinColumn(name = "cliente")
-    @JsonIgnoreProperties("reservations")
+    @JsonIgnoreProperties({"reservations", "messages"})
     private Cliente client;
     
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy="reservation")
     @JsonIgnoreProperties("reservation")
     private List<Calificacion> score;
 
-    public Reservacion() {
+    public Reserva() {
     }
 
-    public Reservacion(Integer id) {
-        this.id = id;
+    public Reserva(Integer id) {
+        this.idReservation = id;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdReservation() {
+        return idReservation;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdReservation(Integer idReservation) {
+        this.idReservation = idReservation;
     }
 
-    public LocalDateTime getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDateTime getSevolutionDate() {
-        return sevolutionDate;
+    public Date getDevolutionDate() {
+        return devolutionDate;
     }
 
-    public void setSevolutionDate(LocalDateTime sevolutionDate) {
-        this.sevolutionDate = sevolutionDate;
+    public void setDevolutionDate(Date devolutionDate) {
+        this.devolutionDate = devolutionDate;
     }
+
+    
 
     public String getStatus() {
         return status;
@@ -112,13 +116,10 @@ public class Reservacion implements Serializable {
         this.score = score;
     }
 
-    
-
     @Override
     public String toString() {
-        return "Reservacion{" + "id=" + id + ", startDate=" + startDate + ", sevolutionDate=" + sevolutionDate + ", status=" + status + ", motorbike=" + motorbike + ", client=" + client + ", score=" + score + '}';
+        return "Reserva{" + "id=" + idReservation + ", startDate=" + startDate + ", devolutionDate=" + devolutionDate + ", status=" + status + ", motorbike=" + motorbike + ", client=" + client + ", score=" + score + '}';
     }
-    
     
     
 }

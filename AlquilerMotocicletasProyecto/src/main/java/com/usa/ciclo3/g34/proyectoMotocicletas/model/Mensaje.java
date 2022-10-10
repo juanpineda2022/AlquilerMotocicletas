@@ -6,6 +6,7 @@ package com.usa.ciclo3.g34.proyectoMotocicletas.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,40 +26,40 @@ public class Mensaje implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idMessage;
     @Column(length = 250)
     private String messageText;
     
     @ManyToOne
     @JoinColumn(name = "motocicletaId")
-    @JsonIgnoreProperties("messages")
+    @JsonIgnoreProperties({"messages", "reservations"})
     private Motocicleta motorbike;
     
     @ManyToOne
-    @JoinColumn(name = "clienteId")
-    @JsonIgnoreProperties("messages")
+    @JoinColumn(name = "clientId")
+    @JsonIgnoreProperties({"messages", "reservations"})
     private Cliente client;
 
     public Mensaje() {
     }
 
     public Mensaje(Integer id) {
-        this.id = id;
+        this.idMessage = id;
     }
 
     public Mensaje(Integer id, String messageText, Motocicleta motorbike, Cliente client) {
-        this.id = id;
+        this.idMessage = id;
         this.messageText = messageText;
         this.motorbike = motorbike;
         this.client = client;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdMessage() {
+        return idMessage;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdMessage(Integer idMessage) {
+        this.idMessage = idMessage;
     }
 
     public String getMessageText() {
@@ -87,7 +88,7 @@ public class Mensaje implements Serializable{
 
     @Override
     public String toString() {
-        return "Mensaje{" + "id=" + id + ", messageText=" + messageText + ", motorbike=" + motorbike + ", client=" + client + '}';
+        return "Mensaje{" + "id=" + idMessage + ", messageText=" + messageText + ", motorbike=" + motorbike + ", client=" + client + '}';
     }
     
     

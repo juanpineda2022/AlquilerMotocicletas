@@ -4,8 +4,8 @@
  */
 package com.usa.ciclo3.g34.proyectoMotocicletas.controller;
 
-import com.usa.ciclo3.g34.proyectoMotocicletas.model.Categoria;
-import com.usa.ciclo3.g34.proyectoMotocicletas.service.CategoriaService;
+import com.usa.ciclo3.g34.proyectoMotocicletas.model.Cliente;
+import com.usa.ciclo3.g34.proyectoMotocicletas.service.ClienteService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,62 +25,54 @@ import org.springframework.web.bind.annotation.RestController;
  * @author jpine
  */
 @RestController
-@RequestMapping("/api/Category")
-public class CategoriaController {
+@RequestMapping("/api/Client")
+public class ClienteController {
     
     @Autowired
-    private CategoriaService categoriaService;
+    private ClienteService clienteService;
     //GET
     @GetMapping("/all")
-    public List<Categoria> getCategorias(){
-        return categoriaService.getAll();
+    public List<Cliente> getClientes(){
+        return clienteService.getAll();
     }
     
     @GetMapping("/{id}")
-    public Optional<Categoria> getCategoria(@PathVariable("id") int categoriaId){
-        return categoriaService.getCategoria(categoriaId);
+    public Optional<Cliente> getCliente(@PathVariable("id") int clienteId){
+        return clienteService.getCliente(clienteId);
     }
     
     //POST
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public void categoriasave(@RequestBody Categoria categoria){
-        categoriaService.save(categoria);
+    public void clienteSave(@RequestBody Cliente cliente){
+        clienteService.save(cliente);
     }
     
     //PUT
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public void categoriaupdate(@RequestBody Categoria categoria){
-        categoriaService.update(categoria);
+    public void clienteUpdate(@RequestBody Cliente cliente){
+        clienteService.update(cliente);
     }
     
     //DELETE
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int id){
-        return categoriaService.deleteCategoria(id);
+        return clienteService.deleteCliente(id);
     }
     
-      //POST
+//    //POST
 //    @PostMapping("/save")
 //    @ResponseStatus(HttpStatus.CREATED)
-//    public Categoria save(@RequestBody Categoria categoria){
-//        return categoriaService.save(categoria);
+//    public Cliente save(@RequestBody Cliente cliente){
+//        return clienteService.save(cliente);
 //    }
-    
+//    
 //    //PUT
 //    @PutMapping("/update")
 //    @ResponseStatus(HttpStatus.CREATED)
-//    public Categoria update(@RequestBody Categoria categoria){
-//        return categoriaService.update(categoria);
+//    public Cliente update(@RequestBody Cliente cliente){
+//        return clienteService.update(cliente);
 //    }
-//    
-//    //DELETE
-//    @DeleteMapping("/{id}")
-//    @ResponseStatus(HttpStatus.NOT_FOUND)
-//    public boolean delete(@PathVariable("id") int id){
-//        return categoriaService.deleteCategoria(id);
-//    }
-    
 }
