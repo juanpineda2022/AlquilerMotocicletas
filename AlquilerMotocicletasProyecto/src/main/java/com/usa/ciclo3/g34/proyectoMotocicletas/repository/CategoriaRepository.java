@@ -4,6 +4,7 @@
  */
 package com.usa.ciclo3.g34.proyectoMotocicletas.repository;
 
+import com.usa.ciclo3.g34.proyectoMotocicletas.repository.crud.CategoriaCrudRepository;
 import com.usa.ciclo3.g34.proyectoMotocicletas.model.Categoria;
 import java.util.List;
 import java.util.Optional;

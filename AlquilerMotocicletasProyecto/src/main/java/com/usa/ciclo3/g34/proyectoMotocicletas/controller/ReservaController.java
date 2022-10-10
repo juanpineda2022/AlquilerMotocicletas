@@ -4,8 +4,8 @@
  */
 package com.usa.ciclo3.g34.proyectoMotocicletas.controller;
 
-import com.usa.ciclo3.g34.proyectoMotocicletas.model.Categoria;
-import com.usa.ciclo3.g34.proyectoMotocicletas.service.CategoriaService;
+import com.usa.ciclo3.g34.proyectoMotocicletas.model.Reserva;
+import com.usa.ciclo3.g34.proyectoMotocicletas.service.ReservaService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,62 +25,55 @@ import org.springframework.web.bind.annotation.RestController;
  * @author jpine
  */
 @RestController
-@RequestMapping("/api/Category")
-public class CategoriaController {
+@RequestMapping("/api/Reservation")
+public class ReservaController {
     
     @Autowired
-    private CategoriaService categoriaService;
+    private ReservaService reservaService;
     //GET
     @GetMapping("/all")
-    public List<Categoria> getCategorias(){
-        return categoriaService.getAll();
+    public List<Reserva> getReservas(){
+        return reservaService.getAll();
     }
     
     @GetMapping("/{id}")
-    public Optional<Categoria> getCategoria(@PathVariable("id") int categoriaId){
-        return categoriaService.getCategoria(categoriaId);
+    public Optional<Reserva> getReserva(@PathVariable("id") int reservaId){
+        return reservaService.getReserva(reservaId);
     }
     
     //POST
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public void categoriasave(@RequestBody Categoria categoria){
-        categoriaService.save(categoria);
+    public void reservaSave(@RequestBody Reserva reserva){
+        reservaService.save(reserva);
     }
     
     //PUT
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public void categoriaupdate(@RequestBody Categoria categoria){
-        categoriaService.update(categoria);
+    public void reservaUpdate(@RequestBody Reserva reserva){
+        reservaService.update(reserva);
     }
     
     //DELETE
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int id){
-        return categoriaService.deleteCategoria(id);
+        return reservaService.deleteReserva(id);
     }
     
-      //POST
+        //POST
 //    @PostMapping("/save")
 //    @ResponseStatus(HttpStatus.CREATED)
-//    public Categoria save(@RequestBody Categoria categoria){
-//        return categoriaService.save(categoria);
+//    public Reserva save(@RequestBody Reserva reserva){
+//        return reservaService.save(reserva);
 //    }
     
 //    //PUT
 //    @PutMapping("/update")
 //    @ResponseStatus(HttpStatus.CREATED)
-//    public Categoria update(@RequestBody Categoria categoria){
-//        return categoriaService.update(categoria);
-//    }
-//    
-//    //DELETE
-//    @DeleteMapping("/{id}")
-//    @ResponseStatus(HttpStatus.NOT_FOUND)
-//    public boolean delete(@PathVariable("id") int id){
-//        return categoriaService.deleteCategoria(id);
+//    public Reserva update(@RequestBody Reserva reserva){
+//        return reservaService.update(reserva);
 //    }
     
 }

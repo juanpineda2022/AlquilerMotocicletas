@@ -26,7 +26,7 @@ public class Cliente implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idClient;
     @Column(length = 250)
     private String name;
     @Column(length = 45)
@@ -37,23 +37,23 @@ public class Cliente implements Serializable{
     private String password;
     
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
-    @JsonIgnoreProperties("client")
+    @JsonIgnoreProperties({"client", "motorbike"})
     private List<Mensaje> messages;
     
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
-    @JsonIgnoreProperties("client")
-    private List<Reservacion> reservations;
+    @JsonIgnoreProperties({"client", "motorbike"})
+    private List<Reserva> reservations;
     
     
     public Cliente() {
     }
 
     public Cliente(Integer id) {
-        this.id = id;
+        this.idClient = id;
     }
 
-    public Cliente(Integer id, String name, String email, Integer age, String password, List<Mensaje> messages, List<Reservacion> reservations) {
-        this.id = id;
+    public Cliente(Integer id, String name, String email, Integer age, String password, List<Mensaje> messages, List<Reserva> reservations) {
+        this.idClient = id;
         this.name = name;
         this.email = email;
         this.age = age;
@@ -62,12 +62,12 @@ public class Cliente implements Serializable{
         this.reservations = reservations;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdClient() {
+        return idClient;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdClient(Integer idClient) {
+        this.idClient = idClient;
     }
 
     public String getName() {
@@ -110,17 +110,17 @@ public class Cliente implements Serializable{
         this.messages = messages;
     }
 
-    public List<Reservacion> getReservations() {
+    public List<Reserva> getReservations() {
         return reservations;
     }
 
-    public void setReservations(List<Reservacion> reservations) {
+    public void setReservations(List<Reserva> reservations) {
         this.reservations = reservations;
     }
 
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id + ", name=" + name + ", email=" + email + ", age=" + age + ", password=" + password + ", messages=" + messages + ", reservations=" + reservations + '}';
+        return "Cliente{" + "id=" + idClient + ", name=" + name + ", email=" + email + ", age=" + age + ", password=" + password + ", messages=" + messages + ", reservations=" + reservations + '}';
     }
     
     

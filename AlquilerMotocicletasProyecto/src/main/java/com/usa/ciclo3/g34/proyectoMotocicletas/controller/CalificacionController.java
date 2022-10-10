@@ -4,8 +4,8 @@
  */
 package com.usa.ciclo3.g34.proyectoMotocicletas.controller;
 
-import com.usa.ciclo3.g34.proyectoMotocicletas.model.Categoria;
-import com.usa.ciclo3.g34.proyectoMotocicletas.service.CategoriaService;
+import com.usa.ciclo3.g34.proyectoMotocicletas.model.Calificacion;
+import com.usa.ciclo3.g34.proyectoMotocicletas.service.CalificacionService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,62 +25,54 @@ import org.springframework.web.bind.annotation.RestController;
  * @author jpine
  */
 @RestController
-@RequestMapping("/api/Category")
-public class CategoriaController {
+@RequestMapping("/api/Score")
+public class CalificacionController {
     
     @Autowired
-    private CategoriaService categoriaService;
+    private CalificacionService calificacionService;
     //GET
     @GetMapping("/all")
-    public List<Categoria> getCategorias(){
-        return categoriaService.getAll();
+    public List<Calificacion> getCalificaciones(){
+        return calificacionService.getAll();
     }
     
     @GetMapping("/{id}")
-    public Optional<Categoria> getCategoria(@PathVariable("id") int categoriaId){
-        return categoriaService.getCategoria(categoriaId);
+    public Optional<Calificacion> getCalificacion(@PathVariable("id") int calificacionId){
+        return calificacionService.getCalificacion(calificacionId);
     }
     
     //POST
     @PostMapping("/save")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void categoriasave(@RequestBody Categoria categoria){
-        categoriaService.save(categoria);
+    @ResponseStatus(HttpStatus.OK)
+    public void calificacionSave(@RequestBody Calificacion calificacion){
+        calificacionService.save(calificacion);
     }
     
     //PUT
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public void categoriaupdate(@RequestBody Categoria categoria){
-        categoriaService.update(categoria);
+    public void calificacionUpdate(@RequestBody Calificacion calificacion){
+        calificacionService.update(calificacion);
     }
     
     //DELETE
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int id){
-        return categoriaService.deleteCategoria(id);
+        return calificacionService.deleteCalificacion(id);
     }
     
-      //POST
+//        //POST
 //    @PostMapping("/save")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public Categoria save(@RequestBody Categoria categoria){
-//        return categoriaService.save(categoria);
+//    @ResponseStatus(HttpStatus.OK)
+//    public Calificacion save(@RequestBody Calificacion calificacion){
+//        return calificacionService.save(calificacion);
 //    }
-    
+//    
 //    //PUT
 //    @PutMapping("/update")
 //    @ResponseStatus(HttpStatus.CREATED)
-//    public Categoria update(@RequestBody Categoria categoria){
-//        return categoriaService.update(categoria);
+//    public Calificacion update(@RequestBody Calificacion calificacion){
+//        return calificacionService.update(calificacion);
 //    }
-//    
-//    //DELETE
-//    @DeleteMapping("/{id}")
-//    @ResponseStatus(HttpStatus.NOT_FOUND)
-//    public boolean delete(@PathVariable("id") int id){
-//        return categoriaService.deleteCategoria(id);
-//    }
-    
 }

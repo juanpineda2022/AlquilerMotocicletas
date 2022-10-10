@@ -29,13 +29,13 @@ public class Motocicleta implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(length = 45, nullable = true)
+    @Column(length = 45)
     private String name;
-    @Column(length = 45, nullable = true)
+    @Column(length = 45)
     private String brand;
-    @Column(name = "`year`",length = 4, nullable = true)
+    @Column(name = "`year`",length = 4)
     private Integer year;
-    @Column(length = 250, nullable = true)
+    @Column(length = 250)
     private String description;
     
     @ManyToOne
@@ -44,12 +44,12 @@ public class Motocicleta implements Serializable{
     private Categoria category;
     
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "motorbike")
-    @JsonIgnoreProperties("motorbike")
+    @JsonIgnoreProperties({"motorbike", "client"})
     private List<Mensaje> messages;
     
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "motorbike")
-    @JsonIgnoreProperties("motorbike")
-    private List<Reservacion> reservations;
+    @JsonIgnoreProperties({"motorbike", "client"})
+    private List<Reserva> reservations;
     
     
     public Motocicleta() {
@@ -59,7 +59,7 @@ public class Motocicleta implements Serializable{
         this.id = id;
     }
 
-    public Motocicleta(Integer id, String name, String brand, Integer year, String description, Categoria category, List<Mensaje> messages, List<Reservacion> reservations) {
+    public Motocicleta(Integer id, String name, String brand, Integer year, String description, Categoria category, List<Mensaje> messages, List<Reserva> reservations) {
         this.id = id;
         this.name = name;
         this.brand = brand;
@@ -128,11 +128,11 @@ public class Motocicleta implements Serializable{
         this.messages = messages;
     }
 
-    public List<Reservacion> getReservations() {
+    public List<Reserva> getReservations() {
         return reservations;
     }
 
-    public void setReservations(List<Reservacion> reservations) {
+    public void setReservations(List<Reserva> reservations) {
         this.reservations = reservations;
     }
 
