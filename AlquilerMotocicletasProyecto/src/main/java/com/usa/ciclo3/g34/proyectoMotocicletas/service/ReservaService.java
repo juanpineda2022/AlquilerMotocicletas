@@ -70,12 +70,22 @@ public class ReservaService {
         }    
     }
     
-    //DELETE
     public boolean deleteReserva(int id){
-        Boolean rBoolean = getReserva(id).map(reserva -> {
-            reservaRepository.delete(reserva);
-            return true;
-        }).orElse(false);
-        return rBoolean;
+        boolean flag=false;
+        Optional<Reserva> r= reservaRepository.getReserva(id);
+        if(r.isPresent()){
+            reservaRepository.delete(r.get());
+            flag=true;
+        }
+        return flag;
     }
+    
+//    //DELETE
+//    public boolean deleteReserva(int id){
+//        Boolean rBoolean = getReserva(id).map(reserva -> {
+//            reservaRepository.delete(reserva);
+//            return true;
+//        }).orElse(false);
+//        return rBoolean;
+//    }
 }

@@ -4,9 +4,7 @@
  */
 package com.usa.ciclo3.g34.proyectoMotocicletas.service;
 
-import com.usa.ciclo3.g34.proyectoMotocicletas.model.Categoria;
 import com.usa.ciclo3.g34.proyectoMotocicletas.model.Cliente;
-import com.usa.ciclo3.g34.proyectoMotocicletas.repository.CategoriaRepository;
 import com.usa.ciclo3.g34.proyectoMotocicletas.repository.ClienteRepository;
 import java.util.List;
 import java.util.Optional;
@@ -75,12 +73,22 @@ public class ClienteService {
         }    
     }
     
-    //DELETE
     public boolean deleteCliente(int id){
-        Boolean cBoolean = getCliente(id).map(cliente -> {
-            clienteRepository.delete(cliente);
-            return true;
-        }).orElse(false);
-        return cBoolean;
+        boolean flag=false;
+        Optional<Cliente> c= clienteRepository.getCliente(id);
+        if(c.isPresent()){
+            clienteRepository.delete(c.get());
+            flag=true;
+        }
+        return flag;
     }
+    
+//    //DELETE
+//    public boolean deleteCliente(int id){
+//        Boolean cBoolean = getCliente(id).map(cliente -> {
+//            clienteRepository.delete(cliente);
+//            return true;
+//        }).orElse(false);
+//        return cBoolean;
+//    }
 }

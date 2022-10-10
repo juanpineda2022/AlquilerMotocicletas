@@ -67,12 +67,22 @@ public class CalificacionService {
         }    
     }
     
-    //DELETE
     public boolean deleteCalificacion(int id){
-        Boolean cBoolean = getCalificacion(id).map(calificacion -> {
-            calificacionRepository.delete(calificacion);
-            return true;
-        }).orElse(false);
-        return cBoolean;
+        boolean flag=false;
+        Optional<Calificacion> c= calificacionRepository.getCalificacion(id);
+        if(c.isPresent()){
+            calificacionRepository.delete(c.get());
+            flag=true;
+        }
+        return flag;
     }
+    
+//    //DELETE
+//    public boolean deleteCalificacion(int id){
+//        Boolean cBoolean = getCalificacion(id).map(calificacion -> {
+//            calificacionRepository.delete(calificacion);
+//            return true;
+//        }).orElse(false);
+//        return cBoolean;
+//    }
 }

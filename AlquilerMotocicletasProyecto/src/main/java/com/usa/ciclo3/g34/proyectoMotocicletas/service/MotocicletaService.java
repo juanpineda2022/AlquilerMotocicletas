@@ -76,13 +76,23 @@ public class MotocicletaService {
         }    
     }
     
-    //DELETE
     public boolean deleteMotocicleta(int id){
-        Boolean mBoolean = getMotocicleta(id).map(motorbike -> {
-            motocicletaRepository.delete(motorbike);
-            return true;
-        }).orElse(false);
-        return mBoolean;
+        boolean flag=false;
+        Optional<Motocicleta> m= motocicletaRepository.getMotocicleta(id);
+        if(m.isPresent()){
+            motocicletaRepository.delete(m.get());
+            flag=true;
+        }
+        return flag;
     }
+    
+//    //DELETE
+//    public boolean deleteMotocicleta(int id){
+//        Boolean mBoolean = getMotocicleta(id).map(motorbike -> {
+//            motocicletaRepository.delete(motorbike);
+//            return true;
+//        }).orElse(false);
+//        return mBoolean;
+//    }
     
 }

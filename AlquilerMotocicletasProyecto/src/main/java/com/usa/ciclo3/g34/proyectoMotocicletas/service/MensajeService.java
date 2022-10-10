@@ -64,12 +64,22 @@ public class MensajeService {
         }    
     }
     
-    //DELETE
     public boolean deleteMensaje(int id){
-        Boolean mBoolean = getMensaje(id).map(mensaje -> {
-            mensajeRepository.delete(mensaje);
-            return true;
-        }).orElse(false);
-        return mBoolean;
+        boolean flag=false;
+        Optional<Mensaje> m= mensajeRepository.getMensaje(id);
+        if(m.isPresent()){
+            mensajeRepository.delete(m.get());
+            flag=true;
+        }
+        return flag;
     }
+    
+//    //DELETE
+//    public boolean deleteMensaje(int id){
+//        Boolean mBoolean = getMensaje(id).map(mensaje -> {
+//            mensajeRepository.delete(mensaje);
+//            return true;
+//        }).orElse(false);
+//        return mBoolean;
+//    }
 }

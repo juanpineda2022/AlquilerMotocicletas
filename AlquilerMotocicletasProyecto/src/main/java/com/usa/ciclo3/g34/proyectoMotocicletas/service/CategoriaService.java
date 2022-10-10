@@ -70,11 +70,21 @@ public class CategoriaService {
     }
     
     //DELETE
+//    public boolean deleteCategoria(int id){
+//        Boolean cBoolean = getCategoria(id).map(category -> {
+//            categoriaRepository.delete(category);
+//            return true;
+//        }).orElse(false);
+//        return cBoolean;
+//    }
+    
     public boolean deleteCategoria(int id){
-        Boolean cBoolean = getCategoria(id).map(category -> {
-            categoriaRepository.delete(category);
-            return true;
-        }).orElse(false);
-        return cBoolean;
+        boolean flag=false;
+        Optional<Categoria> c= categoriaRepository.getCategoria(id);
+        if(c.isPresent()){
+            categoriaRepository.delete(c.get());
+            flag=true;
+        }
+        return flag;
     }
 }
