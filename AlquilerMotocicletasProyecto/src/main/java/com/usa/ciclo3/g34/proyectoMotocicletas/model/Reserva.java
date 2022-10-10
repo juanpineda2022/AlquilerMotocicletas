@@ -19,6 +19,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -47,9 +48,9 @@ public class Reserva implements Serializable {
     @JsonIgnoreProperties({"reservations", "messages"})
     private Cliente client;
     
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy="reservation")
+    @OneToOne(cascade = {CascadeType.PERSIST}, mappedBy="reservation")
     @JsonIgnoreProperties("reservation")
-    private List<Calificacion> score;
+    private Calificacion score;
 
     public Reserva() {
     }
@@ -108,11 +109,11 @@ public class Reserva implements Serializable {
         this.client = client;
     }
 
-    public List<Calificacion> getScore() {
+    public Calificacion getScore() {
         return score;
     }
 
-    public void setScore(List<Calificacion> score) {
+    public void setScore(Calificacion score) {
         this.score = score;
     }
 
