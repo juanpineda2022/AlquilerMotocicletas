@@ -57,10 +57,11 @@ public class CategoriaController {
     
     //DELETE
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public boolean delete(@PathVariable("id") int id){
-        return categoriaService.deleteCategoria(id);
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable("id") int id){
+        categoriaService.deleteCategoria(id);
     }
+    
     
       //POST
 //    @PostMapping("/save")

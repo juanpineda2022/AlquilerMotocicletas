@@ -70,12 +70,22 @@ public class AdminService {
         }    
     }
     
-    //DELETE
     public boolean deleteAdmin(int id){
-        Boolean cBoolean = getAdmin(id).map(admin -> {
-            adminRepository.delete(admin);
-            return true;
-        }).orElse(false);
-        return cBoolean;
+        boolean flag=false;
+        Optional<Admin> a= adminRepository.getAdmin(id);
+        if(a.isPresent()){
+            adminRepository.delete(a.get());
+            flag=true;
+        }
+        return flag;
     }
+    
+//    //DELETE
+//    public boolean deleteAdmin(int id){
+//        Boolean cBoolean = getAdmin(id).map(admin -> {
+//            adminRepository.delete(admin);
+//            return true;
+//        }).orElse(false);
+//        return cBoolean;
+//    }
 }
