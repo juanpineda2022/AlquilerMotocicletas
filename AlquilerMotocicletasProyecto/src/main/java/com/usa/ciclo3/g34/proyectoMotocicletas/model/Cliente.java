@@ -27,14 +27,14 @@ public class Cliente implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idClient;
-    @Column(length = 250)
-    private String name;
     @Column(length = 45)
     private String email;
-    @Column(length = 3)
-    private Integer age;
     @Column(length = 45)
     private String password;
+    @Column(length = 250)
+    private String name;
+    @Column(length = 3)
+    private Integer age;
     
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
     @JsonIgnoreProperties({"client", "motorbike"})
@@ -120,7 +120,7 @@ public class Cliente implements Serializable{
 
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + idClient + ", name=" + name + ", email=" + email + ", age=" + age + ", password=" + password + ", messages=" + messages + ", reservations=" + reservations + '}';
+        return "Cliente{" + "idClient=" + idClient + ", email=" + email + ", password=" + password + ", name=" + name + ", age=" + age + ", messages=" + messages + ", reservations=" + reservations + '}';
     }
     
     
