@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -26,17 +27,17 @@ public class Calificacion implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id = null;
+    private Integer id;
     @Column(length = 1)
-    private Integer calificacion = null;
+    private Integer calificacion;
     //Ver como hacer el set mysql 
     @Column(length = 250)
-    private String message = null;
+    private String message;
     
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name="reserva")
     @JsonIgnoreProperties("score")
-    private Reserva reservation = null;
+    private Reserva reservation;
 
     public Calificacion() {
     }
