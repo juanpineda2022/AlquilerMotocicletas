@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author jpine
  */
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 @RequestMapping("/api/Category")
 public class CategoriaController {
     
@@ -32,11 +35,13 @@ public class CategoriaController {
     private CategoriaService categoriaService;
     //GET
     @GetMapping("/all")
+    @ResponseStatus(HttpStatus.OK)
     public List<Categoria> getCategorias(){
         return categoriaService.getAll();
     }
     
     @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public Optional<Categoria> getCategoria(@PathVariable("id") int categoriaId){
         return categoriaService.getCategoria(categoriaId);
     }
@@ -50,7 +55,7 @@ public class CategoriaController {
     
     //PUT
     @PutMapping("/update")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public void categoriaupdate(@RequestBody Categoria categoria){
         categoriaService.update(categoria);
     }
