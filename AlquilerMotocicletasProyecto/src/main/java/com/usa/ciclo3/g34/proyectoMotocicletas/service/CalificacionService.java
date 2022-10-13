@@ -51,8 +51,8 @@ public class CalificacionService {
         if(calificacion.getId()!=null){
             Optional<Calificacion> c = calificacionRepository.getCalificacion(calificacion.getId());
             if(!c.isEmpty()){
-                if(calificacion.getCalificacion()!=null){
-                    c.get().setCalificacion(calificacion.getCalificacion());
+                if(calificacion.getStars()!=null){
+                    c.get().setStars(calificacion.getStars());
                 }
                 if(calificacion.getMessage()!=null){
                     c.get().setMessage(calificacion.getMessage());

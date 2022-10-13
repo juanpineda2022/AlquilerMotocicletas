@@ -29,7 +29,7 @@ public class Calificacion implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(length = 1)
-    private Integer calificacion;
+    private Integer stars;
     //Ver como hacer el set mysql 
     @Column(length = 250)
     private String message;
@@ -48,7 +48,7 @@ public class Calificacion implements Serializable{
 
     public Calificacion(Integer id, Integer calificacion, String message, Reserva reservation) {
         this.id = id;
-        this.calificacion = calificacion;
+        this.stars = calificacion;
         this.message = message;
         this.reservation = reservation;
     }
@@ -61,12 +61,12 @@ public class Calificacion implements Serializable{
         this.id = id;
     }
 
-    public Integer getCalificacion() {
-        return calificacion;
+    public Integer getStars() {
+        return stars;
     }
 
-    public void setCalificacion(Integer calificacion) {
-        this.calificacion = calificacion;
+    public void setStars(Integer stars) {
+        this.stars = stars;
     }
 
     public String getMessage() {
@@ -87,7 +87,7 @@ public class Calificacion implements Serializable{
 
     @Override
     public String toString() {
-        return "Calificacion{" + "id=" + id + ", calificacion=" + calificacion + ", message=" + message + ", reservation=" + reservation + '}';
+        return "Calificacion{" + "id=" + id + ", calificacion=" + stars + ", message=" + message + ", reservation=" + reservation + '}';
     }
     
 }
