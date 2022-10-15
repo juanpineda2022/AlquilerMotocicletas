@@ -35,13 +35,13 @@ public class CategoriaController {
     private CategoriaService categoriaService;
     //GET
     @GetMapping("/all")
-    @ResponseStatus(HttpStatus.OK)
+//    @ResponseStatus(HttpStatus.OK)
     public List<Categoria> getCategorias(){
         return categoriaService.getAll();
     }
     
     @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
+//    @ResponseStatus(HttpStatus.OK)
     public Optional<Categoria> getCategoria(@PathVariable("id") int categoriaId){
         return categoriaService.getCategoria(categoriaId);
     }

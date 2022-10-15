@@ -35,13 +35,13 @@ public class ClienteController {
     private ClienteService clienteService;
     //GET
     @GetMapping("/all")
-    @ResponseStatus(HttpStatus.OK)
+//    @ResponseStatus(HttpStatus.OK)
     public List<Cliente> getClientes(){
         return clienteService.getAll();
     }
     
     @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
+//    @ResponseStatus(HttpStatus.OK)
     public Optional<Cliente> getCliente(@PathVariable("id") int clienteId){
         return clienteService.getCliente(clienteId);
     }

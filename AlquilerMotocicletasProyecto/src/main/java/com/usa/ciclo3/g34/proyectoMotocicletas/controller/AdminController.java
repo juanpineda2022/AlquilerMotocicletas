@@ -35,13 +35,13 @@ public class AdminController {
     private AdminService adminService;
     //GET
     @GetMapping("/all")
-    @ResponseStatus(HttpStatus.OK)
+//    @ResponseStatus(HttpStatus.OK)
     public List<Admin> getAdmins(){
         return adminService.getAll();
     }
     
     @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
+//    @ResponseStatus(HttpStatus.OK)
     public Optional<Admin> getAdmin(@PathVariable("id") int adminId){
         return adminService.getAdmin(adminId);
     }
