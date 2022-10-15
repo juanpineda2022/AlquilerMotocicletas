@@ -5,6 +5,8 @@
 package com.usa.ciclo3.g34.proyectoMotocicletas.controller;
 
 import com.usa.ciclo3.g34.proyectoMotocicletas.model.Reserva;
+import com.usa.ciclo3.g34.proyectoMotocicletas.model.dto.CountClient;
+import com.usa.ciclo3.g34.proyectoMotocicletas.model.dto.StatusAmount;
 import com.usa.ciclo3.g34.proyectoMotocicletas.service.ReservaService;
 import java.util.List;
 import java.util.Optional;
@@ -46,19 +48,19 @@ public class ReservaController {
         return reservaService.getReserva(reservaId);
     }
     
-//    //POST
-//    @PostMapping("/save")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public void reservaSave(@RequestBody Reserva reserva){
-//        reservaService.save(reserva);
-//    }
-//    
-//    //PUT
-//    @PutMapping("/update")
-//    @ResponseStatus(HttpStatus.ACCEPTED)
-//    public void reservaUpdate(@RequestBody Reserva reserva){
-//        reservaService.update(reserva);
-//    }
+    //POST
+    @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void reservaSave(@RequestBody Reserva reserva){
+        reservaService.save(reserva);
+    }
+    
+    //PUT
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void reservaUpdate(@RequestBody Reserva reserva){
+        reservaService.update(reserva);
+    }
     
     //DELETE
     @DeleteMapping("/{id}")
@@ -67,18 +69,34 @@ public class ReservaController {
         reservaService.deleteReserva(id);
     }
     
-    //POST
-    @PostMapping("/save")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Reserva save(@RequestBody Reserva reserva){
-        return reservaService.save(reserva);
+    @GetMapping("/report-clients")
+    public List<CountClient> getReservaReportCliente(){
+        return reservaService.getToClientes();
     }
     
-    //PUT
-    @PutMapping("/update")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Reserva update(@RequestBody Reserva reserva){
-        return reservaService.update(reserva);
+    @GetMapping("/report-status")
+    public StatusAmount getReservaStatusAmount(){
+        return reservaService.getReservaStatusAmoung();
     }
+    
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List <Reserva> getReservaReportByTiempo(@PathVariable("dateOne") String dateOne, @PathVariable("dateTwo") String dateTwo){
+        return reservaService.getReservasByTiempo(dateOne, dateTwo);
+    }
+            
+    
+//    //POST
+//    @PostMapping("/save")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Reserva save(@RequestBody Reserva reserva){
+//        return reservaService.save(reserva);
+//    }
+//    
+//    //PUT
+//    @PutMapping("/update")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Reserva update(@RequestBody Reserva reserva){
+//        return reservaService.update(reserva);
+//    }
     
 }

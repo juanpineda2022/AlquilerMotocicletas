@@ -5,7 +5,13 @@
 package com.usa.ciclo3.g34.proyectoMotocicletas.service;
 
 import com.usa.ciclo3.g34.proyectoMotocicletas.model.Reserva;
+import com.usa.ciclo3.g34.proyectoMotocicletas.model.dto.CountClient;
+import com.usa.ciclo3.g34.proyectoMotocicletas.model.dto.StatusAmount;
 import com.usa.ciclo3.g34.proyectoMotocicletas.repository.ReservaRepository;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,6 +84,33 @@ public class ReservaService {
             flag=true;
         }
         return flag;
+    }
+    
+    public List<CountClient> getToClientes(){
+        return reservaRepository.getTopClients();
+    }
+    
+    public StatusAmount getReservaStatusAmoung(){
+        List <Reserva> completed = reservaRepository.getReservasByStatus("completed");
+        List <Reserva> cancelled = reservaRepository.getReservasByStatus("cancelled");
+        return new StatusAmount(completed.size(), cancelled.size());
+    }
+    
+    public List<Reserva> getReservasByTiempo(String dateA, String dateB){
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        Date a = new Date();
+        Date b = new Date();
+        try{
+            a = formato.parse(dateA);
+            b = formato.parse(dateB);
+        }catch(ParseException e){
+            e.printStackTrace();
+        }
+        if(a.before(b)){
+            return reservaRepository.getReservasTiempo(a, b);
+        }else{
+            return new ArrayList<>();
+        }
     }
     
 //    //DELETE

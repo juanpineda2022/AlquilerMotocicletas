@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.usa.ciclo3.g34.proyectoMotocicletas.dto;
+package com.usa.ciclo3.g34.proyectoMotocicletas.model.dto;
 
 /**
  *
@@ -34,6 +34,11 @@ public class StatusAmount {
 
     public void setCancelled(int cancelled) {
         this.cancelled = cancelled;
+    }
+
+    @Override
+    public String toString() {
+        return "StatusAmount{" + "completed=" + completed + ", cancelled=" + cancelled + '}';
     }
     
     
