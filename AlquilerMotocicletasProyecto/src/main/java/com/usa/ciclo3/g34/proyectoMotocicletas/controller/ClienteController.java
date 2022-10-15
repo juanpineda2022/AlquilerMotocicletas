@@ -46,19 +46,19 @@ public class ClienteController {
         return clienteService.getCliente(clienteId);
     }
     
-    //POST
-    @PostMapping("/save")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void clienteSave(@RequestBody Cliente cliente){
-        clienteService.save(cliente);
-    }
-    
-    //PUT
-    @PutMapping("/update")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public void clienteUpdate(@RequestBody Cliente cliente){
-        clienteService.update(cliente);
-    }
+//    //POST
+//    @PostMapping("/save")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public void clienteSave(@RequestBody Cliente cliente){
+//        clienteService.save(cliente);
+//    }
+//    
+//    //PUT
+//    @PutMapping("/update")
+//    @ResponseStatus(HttpStatus.ACCEPTED)
+//    public void clienteUpdate(@RequestBody Cliente cliente){
+//        clienteService.update(cliente);
+//    }
     
     //DELETE
     @DeleteMapping("/{id}")
@@ -67,17 +67,17 @@ public class ClienteController {
         clienteService.deleteCliente(id);
     }
     
-//    //POST
-//    @PostMapping("/save")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public Cliente save(@RequestBody Cliente cliente){
-//        return clienteService.save(cliente);
-//    }
-//    
-//    //PUT
-//    @PutMapping("/update")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public Cliente update(@RequestBody Cliente cliente){
-//        return clienteService.update(cliente);
-//    }
+    //POST
+    @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Cliente save(@RequestBody Cliente cliente){
+        return clienteService.save(cliente);
+    }
+    
+    //PUT
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Cliente update(@RequestBody Cliente cliente){
+        return clienteService.update(cliente);
+    }
 }

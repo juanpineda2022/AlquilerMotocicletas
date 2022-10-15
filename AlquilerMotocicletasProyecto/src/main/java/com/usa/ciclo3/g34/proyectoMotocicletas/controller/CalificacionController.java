@@ -45,20 +45,20 @@ public class CalificacionController {
     public Optional<Calificacion> getCalificacion(@PathVariable("id") int calificacionId){
         return calificacionService.getCalificacion(calificacionId);
     }
-    
-    //POST
-    @PostMapping("/save")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void calificacionSave(@RequestBody Calificacion calificacion){
-        calificacionService.save(calificacion);
-    }
-    
-    //PUT
-    @PutMapping("/update")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public void calificacionUpdate(@RequestBody Calificacion calificacion){
-        calificacionService.update(calificacion);
-    }
+//    
+//    //POST
+//    @PostMapping("/save")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public void calificacionSave(@RequestBody Calificacion calificacion){
+//        calificacionService.save(calificacion);
+//    }
+//    
+//    //PUT
+//    @PutMapping("/update")
+//    @ResponseStatus(HttpStatus.ACCEPTED)
+//    public void calificacionUpdate(@RequestBody Calificacion calificacion){
+//        calificacionService.update(calificacion);
+//    }
     
     //DELETE
     @DeleteMapping("/{id}")
@@ -67,17 +67,17 @@ public class CalificacionController {
         calificacionService.deleteCalificacion(id);
     }
     
-//        //POST
-//    @PostMapping("/save")
-//    @ResponseStatus(HttpStatus.OK)
-//    public Calificacion save(@RequestBody Calificacion calificacion){
-//        return calificacionService.save(calificacion);
-//    }
-//    
-//    //PUT
-//    @PutMapping("/update")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public Calificacion update(@RequestBody Calificacion calificacion){
-//        return calificacionService.update(calificacion);
-//    }
+        //POST
+    @PostMapping("/save")
+    @ResponseStatus(HttpStatus.OK)
+    public Calificacion save(@RequestBody Calificacion calificacion){
+        return calificacionService.save(calificacion);
+    }
+    
+    //PUT
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Calificacion update(@RequestBody Calificacion calificacion){
+        return calificacionService.update(calificacion);
+    }
 }
