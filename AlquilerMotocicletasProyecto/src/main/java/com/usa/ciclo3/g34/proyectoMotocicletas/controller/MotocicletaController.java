@@ -46,19 +46,19 @@ public class MotocicletaController {
         return motocicletaService.getMotocicleta(motocicletaId);
     }
     
-//    //POST
-//    @PostMapping("/save")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public void motocicletaSave(@RequestBody Motocicleta motocicleta){
-//        motocicletaService.save(motocicleta);
-//    }
-//    
-//    //PUT
-//    @PutMapping("/update")
-//    @ResponseStatus(HttpStatus.ACCEPTED)
-//    public void motocicletaUpdate(@RequestBody Motocicleta motocicleta){
-//        motocicletaService.update(motocicleta);
-//    }
+    //POST
+    @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void motocicletaSave(@RequestBody Motocicleta motocicleta){
+        motocicletaService.save(motocicleta);
+    }
+    
+    //PUT
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void motocicletaUpdate(@RequestBody Motocicleta motocicleta){
+        motocicletaService.update(motocicleta);
+    }
     
     //DELETE
     @DeleteMapping("/{id}")
@@ -67,18 +67,18 @@ public class MotocicletaController {
         motocicletaService.deleteMotocicleta(id);
     }
     
-    //POST
-    @PostMapping("/save")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Motocicleta save(@RequestBody Motocicleta motocicleta){
-        return motocicletaService.save(motocicleta);
-    }
-    
-    //PUT
-    @PutMapping("/update")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Motocicleta update(@RequestBody Motocicleta motocicleta){
-        return motocicletaService.update(motocicleta);
-    }
+//    //POST
+//    @PostMapping("/save")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Motocicleta save(@RequestBody Motocicleta motocicleta){
+//        return motocicletaService.save(motocicleta);
+//    }
+//    
+//    //PUT
+//    @PutMapping("/update")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Motocicleta update(@RequestBody Motocicleta motocicleta){
+//        return motocicletaService.update(motocicleta);
+//    }
     
 }

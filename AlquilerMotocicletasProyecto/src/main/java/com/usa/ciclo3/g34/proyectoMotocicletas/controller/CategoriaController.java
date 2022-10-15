@@ -46,19 +46,19 @@ public class CategoriaController {
         return categoriaService.getCategoria(categoriaId);
     }
     
-//    //POST
-//    @PostMapping("/save")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public void categoriasave(@RequestBody Categoria categoria){
-//        categoriaService.save(categoria);
-//    }
-//    
-//    //PUT
-//    @PutMapping("/update")
-//    @ResponseStatus(HttpStatus.ACCEPTED)
-//    public void categoriaupdate(@RequestBody Categoria categoria){
-//        categoriaService.update(categoria);
-//    }
+    //POST
+    @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void categoriasave(@RequestBody Categoria categoria){
+        categoriaService.save(categoria);
+    }
+    
+    //PUT
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void categoriaupdate(@RequestBody Categoria categoria){
+        categoriaService.update(categoria);
+    }
     
     //DELETE
     @DeleteMapping("/{id}")
@@ -68,19 +68,19 @@ public class CategoriaController {
     }
     
     
-      //POST
-    @PostMapping("/save")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Categoria save(@RequestBody Categoria categoria){
-        return categoriaService.save(categoria);
-    }
-    
-    //PUT
-    @PutMapping("/update")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Categoria update(@RequestBody Categoria categoria){
-        return categoriaService.update(categoria);
-    }
+//      //POST
+//    @PostMapping("/save")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Categoria save(@RequestBody Categoria categoria){
+//        return categoriaService.save(categoria);
+//    }
+//    
+//    //PUT
+//    @PutMapping("/update")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Categoria update(@RequestBody Categoria categoria){
+//        return categoriaService.update(categoria);
+//    }
 //    
 //    //DELETE
 //    @DeleteMapping("/{id}")
