@@ -70,7 +70,7 @@ public class CategoriaController {
     
       //POST
     @PostMapping("/save")
-//    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.CREATED)
     public Categoria save(@RequestBody Categoria categoria){
         return categoriaService.save(categoria);
     }
