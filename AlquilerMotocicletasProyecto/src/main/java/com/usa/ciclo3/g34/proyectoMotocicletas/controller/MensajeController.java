@@ -46,19 +46,19 @@ public class MensajeController {
         return mensajeService.getMensaje(mensajeId);
     }
     
-    //POST
-    @PostMapping("/save")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void mensajeSave(@RequestBody Mensaje mensaje){
-        mensajeService.save(mensaje);
-    }
-    
-    //PUT
-    @PutMapping("/update")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public void mensajeUpdate(@RequestBody Mensaje mensaje){
-        mensajeService.update(mensaje);
-    }
+//    //POST
+//    @PostMapping("/save")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public void mensajeSave(@RequestBody Mensaje mensaje){
+//        mensajeService.save(mensaje);
+//    }
+//    
+//    //PUT
+//    @PutMapping("/update")
+//    @ResponseStatus(HttpStatus.ACCEPTED)
+//    public void mensajeUpdate(@RequestBody Mensaje mensaje){
+//        mensajeService.update(mensaje);
+//    }
     
     //DELETE
     @DeleteMapping("/{id}")
@@ -67,17 +67,17 @@ public class MensajeController {
         mensajeService.deleteMensaje(id);
     }
     
-//    //POST
-//    @PostMapping("/save")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public Mensaje save(@RequestBody Mensaje mensaje){
-//        return mensajeService.save(mensaje);
-//    }
-//    
-//    //PUT
-//    @PutMapping("/update")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public Mensaje update(@RequestBody Mensaje mensaje){
-//        return mensajeService.update(mensaje);
-//    }
+    //POST
+    @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Mensaje save(@RequestBody Mensaje mensaje){
+        return mensajeService.save(mensaje);
+    }
+    
+    //PUT
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Mensaje update(@RequestBody Mensaje mensaje){
+        return mensajeService.update(mensaje);
+    }
 }

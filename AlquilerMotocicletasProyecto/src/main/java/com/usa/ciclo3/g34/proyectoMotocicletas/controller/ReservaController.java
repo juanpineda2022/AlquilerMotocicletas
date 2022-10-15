@@ -46,19 +46,19 @@ public class ReservaController {
         return reservaService.getReserva(reservaId);
     }
     
-    //POST
-    @PostMapping("/save")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void reservaSave(@RequestBody Reserva reserva){
-        reservaService.save(reserva);
-    }
-    
-    //PUT
-    @PutMapping("/update")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public void reservaUpdate(@RequestBody Reserva reserva){
-        reservaService.update(reserva);
-    }
+//    //POST
+//    @PostMapping("/save")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public void reservaSave(@RequestBody Reserva reserva){
+//        reservaService.save(reserva);
+//    }
+//    
+//    //PUT
+//    @PutMapping("/update")
+//    @ResponseStatus(HttpStatus.ACCEPTED)
+//    public void reservaUpdate(@RequestBody Reserva reserva){
+//        reservaService.update(reserva);
+//    }
     
     //DELETE
     @DeleteMapping("/{id}")
@@ -67,18 +67,18 @@ public class ReservaController {
         reservaService.deleteReserva(id);
     }
     
-        //POST
-//    @PostMapping("/save")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public Reserva save(@RequestBody Reserva reserva){
-//        return reservaService.save(reserva);
-//    }
+    //POST
+    @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Reserva save(@RequestBody Reserva reserva){
+        return reservaService.save(reserva);
+    }
     
-//    //PUT
-//    @PutMapping("/update")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public Reserva update(@RequestBody Reserva reserva){
-//        return reservaService.update(reserva);
-//    }
+    //PUT
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Reserva update(@RequestBody Reserva reserva){
+        return reservaService.update(reserva);
+    }
     
 }
