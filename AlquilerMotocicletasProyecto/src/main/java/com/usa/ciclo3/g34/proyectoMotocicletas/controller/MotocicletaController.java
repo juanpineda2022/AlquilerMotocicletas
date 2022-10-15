@@ -35,13 +35,13 @@ public class MotocicletaController {
     private MotocicletaService motocicletaService;
     //GET
     @GetMapping("/all")
-    @ResponseStatus(HttpStatus.OK)
+//    @ResponseStatus(HttpStatus.OK)
     public List<Motocicleta> getMotocicletas(){
         return motocicletaService.getAll();
     }
     
     @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
+//    @ResponseStatus(HttpStatus.OK)
     public Optional<Motocicleta> getMotocicleta(@PathVariable("id") int motocicletaId){
         return motocicletaService.getMotocicleta(motocicletaId);
     }

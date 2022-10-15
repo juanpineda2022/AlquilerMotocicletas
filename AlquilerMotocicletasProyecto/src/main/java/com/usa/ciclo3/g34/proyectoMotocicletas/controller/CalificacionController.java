@@ -35,13 +35,13 @@ public class CalificacionController {
     private CalificacionService calificacionService;
     //GET
     @GetMapping("/all")
-    @ResponseStatus(HttpStatus.OK)
+//    @ResponseStatus(HttpStatus.OK)
     public List<Calificacion> getCalificaciones(){
         return calificacionService.getAll();
     }
     
     @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
+//    @ResponseStatus(HttpStatus.OK)
     public Optional<Calificacion> getCalificacion(@PathVariable("id") int calificacionId){
         return calificacionService.getCalificacion(calificacionId);
     }

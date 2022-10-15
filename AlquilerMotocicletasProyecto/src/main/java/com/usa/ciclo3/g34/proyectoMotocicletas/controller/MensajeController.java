@@ -35,13 +35,13 @@ public class MensajeController {
     private MensajeService mensajeService;
     //GET
     @GetMapping("/all")
-    @ResponseStatus(HttpStatus.OK)
+//    @ResponseStatus(HttpStatus.OK)
     public List<Mensaje> getMensajes(){
         return mensajeService.getAll();
     }
     
     @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
+//    @ResponseStatus(HttpStatus.OK)
     public Optional<Mensaje> getMensaje(@PathVariable("id") int mensajeId){
         return mensajeService.getMensaje(mensajeId);
     }

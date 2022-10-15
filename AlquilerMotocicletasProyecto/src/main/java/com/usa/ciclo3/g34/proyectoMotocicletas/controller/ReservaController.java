@@ -35,13 +35,13 @@ public class ReservaController {
     private ReservaService reservaService;
     //GET
     @GetMapping("/all")
-    @ResponseStatus(HttpStatus.OK)
+//    @ResponseStatus(HttpStatus.OK)
     public List<Reserva> getReservas(){
         return reservaService.getAll();
     }
     
     @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
+//    @ResponseStatus(HttpStatus.OK)
     public Optional<Reserva> getReserva(@PathVariable("id") int reservaId){
         return reservaService.getReserva(reservaId);
     }
