@@ -27,9 +27,9 @@ public class Categoria implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(length = 45, nullable = true)
+    @Column(length = 45, nullable = false)
     private String name;
-    @Column(length = 250, nullable = true)
+    @Column(length = 250, nullable = false)
     private String description;
     
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy="category")
