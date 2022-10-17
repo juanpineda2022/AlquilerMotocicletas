@@ -19,56 +19,76 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class CategoriaService {
-    
+
     @Autowired
     private CategoriaRepository categoriaRepository;
-    
+
     //Lógica de negocio
-    
     //GET
-    public List<Categoria> getAll(){
+    public List<Categoria> getAll() {
         return categoriaRepository.getAll();
     }
-    
-    public Optional<Categoria> getCategoria(int id){
+
+    public Optional<Categoria> getCategoria(int id) {
         return categoriaRepository.getCategoria(id);
     }
-    
+
     //POST
-    public Categoria save(Categoria category){
-        if(category.getId()==null){
-            return categoriaRepository.save(category);
-        }else{
-            Optional<Categoria> c = categoriaRepository.getCategoria(category.getId());
-            if(c.isEmpty()){
+    public Categoria save(Categoria category) {
+        if (category.getId() == null) {
+            if (!category.getName().isBlank() && !category.getDescription().isBlank()) {
                 return categoriaRepository.save(category);
-            }else{
+            } else {
                 return category;
             }
+        } else {
+            return category;
+        }
+//        else{
+//            Optional<Categoria> c = categoriaRepository.getCategoria(category.getId());
+//            if(c.isEmpty()){
+//                return categoriaRepository.save(category);
+//            }else{
+//                return category;
+//            }
+//        }
+    }
+
+//    public Categoria save(Categoria category){
+//        
+//        if (category.getId() == null) {
+//            if (!category.getName().isBlank() || category.getDescription().isBlank()) {
+//                return categoriaRepository.save(category);
+//            }else{
+//                return category;
+//            }
+//        }else{
+//            return category;
+//        }
+//    }
+    //PUT
+    public Categoria update(Categoria category) {
+        if (category.getId() != null) {
+            Optional<Categoria> c = categoriaRepository.getCategoria(category.getId());
+            if (!c.isEmpty()) {
+                if (!category.getName().isBlank() && !category.getDescription().isBlank()) {
+                    if (category.getName() != null) {
+                        c.get().setName(category.getName());
+                    }
+                    if (category.getDescription() != null) {
+                        c.get().setDescripction(category.getDescription());
+                    }
+                    categoriaRepository.save(c.get());
+                }
+                return c.get();
+            } else {
+                return category;
+            }
+        } else {
+            return category;
         }
     }
-    
-    //PUT
-    public Categoria update(Categoria category){
-        if(category.getId()!=null){
-            Optional<Categoria> c = categoriaRepository.getCategoria(category.getId());
-            if(!c.isEmpty()){
-                if(category.getName()!=null){
-                    c.get().setName(category.getName());
-                }
-                if(category.getDescription()!=null){
-                    c.get().setDescripction(category.getDescription());
-                }
-                categoriaRepository.save(c.get());
-                return c.get();
-            }else{
-                return category;
-            }
-        }else{
-            return category;
-        }    
-    }
-    
+
     //DELETE
 //    public boolean deleteCategoria(int id){
 //        Boolean cBoolean = getCategoria(id).map(category -> {
@@ -77,13 +97,12 @@ public class CategoriaService {
 //        }).orElse(false);
 //        return cBoolean;
 //    }
-    
-    public boolean deleteCategoria(int id){
-        boolean flag=false;
-        Optional<Categoria> c= categoriaRepository.getCategoria(id);
-        if(c.isPresent()){
+    public boolean deleteCategoria(int id) {
+        boolean flag = false;
+        Optional<Categoria> c = categoriaRepository.getCategoria(id);
+        if (c.isPresent()) {
             categoriaRepository.delete(c.get());
-            flag=true;
+            flag = true;
         }
         return flag;
     }
