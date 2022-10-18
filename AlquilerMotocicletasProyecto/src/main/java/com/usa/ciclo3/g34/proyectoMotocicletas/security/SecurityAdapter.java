@@ -14,21 +14,19 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author jpine
  */
-
 @RestController
-public class SecurityAdapter extends WebSecurityConfigurerAdapter{
-    
+public class SecurityAdapter extends WebSecurityConfigurerAdapter {
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests(a -> a
-		.antMatchers("/", "/error", "/webjars/**","/api/**","/h2-console").permitAll().anyRequest().authenticated()
-                
+                .antMatchers("/", "/error", "/webjars/**", "/api/**", "/h2-console").permitAll().anyRequest().authenticated()
         ).exceptionHandling(e -> e
                 .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
         ).oauth2Login().defaultSuccessUrl("http://129.80.40.230/frontend/public_html/index.html", true);
 
-//        http.cors().and().csrf().disable();
+        http.cors().and().csrf().disable();
 
     }
-    
+
 }
