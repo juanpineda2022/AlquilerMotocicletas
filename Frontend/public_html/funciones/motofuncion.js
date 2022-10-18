@@ -264,7 +264,7 @@ function deleteElementos(idMt) {
     }).then((result) => {
         if (result.isConfirmed) {
             let data = {
-                id: iMCt
+                id: idMt
             };
 
             let dataToSend = JSON.stringify(data);

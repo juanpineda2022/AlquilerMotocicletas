@@ -124,13 +124,6 @@ function saveElementos() {
             text: '¡No se pudo guardar correctamente!',
             text: 'Todos los campos son obligatorios',
         });
-    } else if ($("#startDate1").val() < $("#devolutionDate1").val()) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: '¡No se pudo guardar correctamente!',
-            text: 'La fecha de inicio de la reserva debe ser anterior a la de devolución',
-        });
     } else if ($("#devolutionDate1").val() <= $("#startDate1").val()) {
         Swal.fire({
             icon: 'error',
@@ -231,7 +224,7 @@ function updateElementos() {
         console.log(dataToSend);
         $.ajax({
             url: "http://129.80.40.230:8081/api/Reservation/update",
-            type: "POST",
+            type: "PUT",
             data: dataToSend,
             //dataType: "JSON",
             contentType: 'application/json',
