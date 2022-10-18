@@ -45,7 +45,7 @@ $(function () {
 
 function traerInformacionMoto() {
     $.ajax({
-        url: "http://localhost:8080/api/Motorbike/all",
+        url: "http://129.80.40.230:8081/api/Motorbike/all",
         type: "GET",
         datatype: "JSON",
         success: function (respuestaM) {
@@ -69,7 +69,7 @@ function pintarRespuestaMoto(respuestaM) {
 
 function traerInformacionClient() {
     $.ajax({
-        url: "http://localhost:8080/api/Client/all",
+        url: "http://129.80.40.230:8081/api/Client/all",
         type: "GET",
         datatype: "JSON",
         success: function (respuestaC) {
@@ -93,7 +93,7 @@ function pintarRespuestaClient(respuestaC) {
 
 function getAllElementos() {
     $.ajax({
-        url: "http://localhost:8080/api/Reservation/all",
+        url: "http://129.80.40.230:8081/api/Reservation/all",
         type: "GET",
         dataType: "JSON",
         contentType: "application/json",
@@ -155,7 +155,7 @@ function saveElementos() {
         let dataToSend = JSON.stringify(data);
         console.log(dataToSend);
         $.ajax({
-            url: "http://localhost:8080/api/Reservation/save",
+            url: "http://129.80.40.230:8081/api/Reservation/save",
             type: "POST",
             data: dataToSend,
             //dataType: "JSON",
@@ -230,7 +230,7 @@ function updateElementos() {
         let dataToSend = JSON.stringify(data);
         console.log(dataToSend);
         $.ajax({
-            url: "http://localhost:8080/api/Reservation/update",
+            url: "http://129.80.40.230:8081/api/Reservation/update",
             type: "POST",
             data: dataToSend,
             //dataType: "JSON",
@@ -279,7 +279,7 @@ function deleteElementos(idRv) {
             console.log(dataToSend);
 
             $.ajax({
-                url: "http://localhost:8080/api/Reservation/" + idRv,
+                url: "http://129.80.40.230:8081/api/Reservation/" + idRv,
                 type: "DELETE",
                 data: dataToSend,
                 dataType: "JSON",
