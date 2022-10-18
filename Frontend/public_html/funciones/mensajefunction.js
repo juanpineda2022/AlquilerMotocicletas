@@ -4,7 +4,7 @@
  */
 function getAllElementos() {
     $.ajax({
-        url: "http://localhost:8080/api/Message/all",
+        url: "http://129.80.40.230:8081/api/Message/all",
         type: "GET",
         dataType: "JSON",
         contentType: "application/json",
@@ -42,7 +42,7 @@ function getAllElementos() {
 
 function traerInformacionMoto() {
     $.ajax({
-        url: "http://localhost:8080/api/Motorbike/all",
+        url: "http://129.80.40.230:8081/api/Motorbike/all",
         type: "GET",
         datatype: "JSON",
         success: function (respuestaM) {
@@ -66,7 +66,7 @@ function pintarRespuestaMoto(respuestaM) {
 
 function traerInformacionClient() {
     $.ajax({
-        url: "http://localhost:8080/api/Client/all",
+        url: "http://129.80.40.230:8081/api/Client/all",
         type: "GET",
         datatype: "JSON",
         success: function (respuestaC) {
@@ -110,7 +110,7 @@ function saveElementos() {
         let dataToSend = JSON.stringify(data);
         console.log(dataToSend);
         $.ajax({
-            url: "http://localhost:8080/api/Message/save",
+            url: "http://129.80.40.230:8081/api/Message/save",
             type: "POST",
             data: dataToSend,
             //dataType: "JSON",
@@ -173,7 +173,7 @@ function updateElementos() {
         let dataToSend = JSON.stringify(data);
         console.log(dataToSend);
         $.ajax({
-            url: "http://localhost:8080/api/Message/update",
+            url: "http://129.80.40.230:8081/api/Message/update",
             type: "PUT",
             data: dataToSend,
             //dataType: "JSON",
@@ -223,7 +223,7 @@ function deleteElementos(idMj) {
             console.log(dataToSend);
 
             $.ajax({
-                url: "http://localhost:8080/api/Message/" + idMj,
+                url: "http://129.80.40.230:8081/api/Message/" + idMj,
                 type: "DELETE",
                 data: dataToSend,
                 dataType: "JSON",

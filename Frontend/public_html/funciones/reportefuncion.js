@@ -6,7 +6,7 @@
 //Funcion para traer la informacion del reporte por status
 function getReporteStatus() {
     $.ajax({
-        url: "http://localhost:8080/api/Reservation/report-status",
+        url: "http://129.80.40.230:8081/api/Reservation/report-status",
         type: "GET",
         datatype: "JSON",
         success: function (reportstatus) {
@@ -23,7 +23,7 @@ function getReporteFechas() {
     var finalDate = document.getElementById("devolutionDate").value;
 
     $.ajax({
-        url: "http://localhost:8080/api/Reservation/report-dates/" + inicialDate + "/" + finalDate,
+        url: "http://129.80.40.230:8081/api/Reservation/report-dates/" + inicialDate + "/" + finalDate,
         type: "GET",
         datatype: "JSON",
         success: function (reportF) {
@@ -40,7 +40,7 @@ function getReporteFechas() {
 //Funcion para traer la informacion del reporte entre clientes
 function getReporteTopClientes() {
     $.ajax({
-        url: "http://localhost:8080/api/Reservation/report-clients",
+        url: "http://129.80.40.230:8081/api/Reservation/report-clients",
         type: "GET",
         datatype: "JSON",
         success: function (reportTC) {

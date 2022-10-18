@@ -5,7 +5,7 @@
 
 function getAllElementos() {
     $.ajax({
-        url: "http://localhost:8080/api/Category/all",
+        url: "http://129.80.40.230:8081/api/Category/all",
         type: "GET",
         dataType: "JSON",
         contentType: "application/json",
@@ -55,7 +55,7 @@ function saveElementos() {
     //console.log(dataToSend);
 
     $.ajax({
-        url: "http://localhost:8080/api/Category/save",
+        url: "http://129.80.40.230:8081/api/Category/save",
         type: "POST",
         data: dataToSend,
         //dataType: "JSON",
@@ -136,7 +136,7 @@ function updateElementos() {
     //console.log(dataToSend);
 
     $.ajax({
-        url: "http://localhost:8080/api/Category/update",
+        url: "http://129.80.40.230:8081/api/Category/update",
         type: "PUT",
         data: dataToSend,
         //dataType: "JSON",
@@ -192,7 +192,7 @@ function deleteElementos(idCt) {
             console.log(dataToSend);
 
             $.ajax({
-                url: "http://localhost:8080/api/Category/" + idCt,
+                url: "http://129.80.40.230:8081/api/Category/" + idCt,
                 type: "DELETE",
                 data: dataToSend,
                 dataType: "JSON",

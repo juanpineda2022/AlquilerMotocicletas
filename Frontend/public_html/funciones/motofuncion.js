@@ -5,7 +5,7 @@
 
 function getAllElementos() {
     $.ajax({
-        url: "http://localhost:8080/api/Motorbike/all",
+        url: "http://129.80.40.230:8081/api/Motorbike/all",
         type: "GET",
         dataType: "JSON",
         contentType: "application/json",
@@ -79,7 +79,7 @@ function getAllElementos() {
 
 function traerInformacionCategory() {
     $.ajax({
-        url: "http://localhost:8080/api/Category/all",
+        url: "http://129.80.40.230:8081/api/Category/all",
         type: "GET",
         datatype: "JSON",
         success: function (respuestaC) {
@@ -131,7 +131,7 @@ function saveElementos() {
         console.log(dataToSend);
 
         $.ajax({
-            url: "http://localhost:8080/api/Motorbike/save",
+            url: "http://129.80.40.230:8081/api/Motorbike/save",
             type: "POST",
             data: dataToSend,
             //dataType: "JSON",
@@ -215,7 +215,7 @@ function updateElementos() {
         console.log(dataToSend);
 
         $.ajax({
-            url: "http://localhost:8080/api/Motorbike/update",
+            url: "http://129.80.40.230:8081/api/Motorbike/update",
             type: "PUT",
             data: dataToSend,
             //dataType: "JSON",
@@ -271,7 +271,7 @@ function deleteElementos(idMt) {
             console.log(dataToSend);
 
             $.ajax({
-                url: "http://localhost:8080/api/Motorbike/" + idMt,
+                url: "http://129.80.40.230:8081/api/Motorbike/" + idMt,
                 type: "DELETE",
                 data: dataToSend,
                 dataType: "JSON",
