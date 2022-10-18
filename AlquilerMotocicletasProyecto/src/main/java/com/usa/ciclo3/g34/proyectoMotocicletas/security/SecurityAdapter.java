@@ -25,7 +25,7 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter{
                 
         ).exceptionHandling(e -> e
                 .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
-        ).oauth2Login().defaultSuccessUrl("/paginas/inicio.html", true);
+        ).oauth2Login().defaultSuccessUrl("http://129.80.40.230/frontend/public_html/index.html", true);
 
         http.cors().and().csrf().disable();
 
